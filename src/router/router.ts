@@ -10,16 +10,6 @@ export default [
     redirect: '/index'
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/login.vue'),
-    meta: {
-      icon: '',
-      keepAlive: true,
-      title: 'login'
-    }
-  },
-  {
     path: '/index',
     name: 'index',
     component: () => import('@/views/index/index.vue'),

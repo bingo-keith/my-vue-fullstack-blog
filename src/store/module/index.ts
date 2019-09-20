@@ -23,12 +23,12 @@ const mutations: MutationTree<IndexState> = {
 }
 
 const actions: ActionTree<IndexState, any> = {
-  UPDATE_STATE_ASYN({ commit }, data: IndexState) {
+  UPDATE_STATE_ASYN({ commit, state: IndexState }, data: IndexState) {
     commit('UPDATE_STATE', data)
   },
-  GET_DATA_ASYN() {
-    IndexApi.getData()
-  }
+  // GET_DATA_ASYN({ commit, state: LoginState }) {
+  //   Index.getData()
+  // }
 }
 
 export default {
