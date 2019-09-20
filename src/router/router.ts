@@ -15,8 +15,18 @@ export default [
     component: () => import('@/views/index/index.vue'),
     meta: {
       icon: '',
-      keepAlive: true,
+      keepAlive: false,
       title: 'index'
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/login.vue'),
+    meta: {
+      icon: '',
+      keepAlive: false,
+      title: 'login'
     }
   }
 ]

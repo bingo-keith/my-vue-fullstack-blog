@@ -1,26 +1,24 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
-import { IndexData } from '@/types/views/index.interface'
+import { LoginData } from '@/types/views/login.interface'
 // import {  } from "@/components" // 组件
-import * as IndexApi from '@/api/index'
+import * as LoginApi from '@/api/login'
 
 @Component({})
 export default class About extends Vue {
   // Getter
-  // @Getter author
+  @Getter author
   
   // Action
-  @Action GET_DATA_ASYN
+  // @Action GET_DATA_ASYN
 
   // data
-  data: IndexData = {
-    pageName: 'index'
+  data: LoginData = {
+    pageName: 'hello'
   }
 
   created() {
-    IndexApi.getData({ name: 'Chilly' }).then(data => {
-      console.log(data)
-    })
+    // this.GET_DATA_ASYN()
   }
   
   activated() {

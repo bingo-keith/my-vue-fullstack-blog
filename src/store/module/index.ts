@@ -26,9 +26,11 @@ const actions: ActionTree<IndexState, any> = {
   UPDATE_STATE_ASYN({ commit, state: IndexState }, data: IndexState) {
     commit('UPDATE_STATE', data)
   },
-  // GET_DATA_ASYN({ commit, state: LoginState }) {
-  //   Index.getData()
-  // }
+  GET_DATA_ASYN({ commit, state: LoginState }) {
+    IndexApi.getData({ name: 'zs' }).then(res => {
+      commit('UPDATE_STATE')
+    })
+  }
 }
 
 export default {

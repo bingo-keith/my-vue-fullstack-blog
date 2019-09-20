@@ -17,7 +17,7 @@ if (!dirName) {
  * @msg: vue页面模版
  */
 const VueTep = `<template>
-  <div class="${dirName}-wrap">
+  <div id="wb${dirName.charAt(0).toUpperCase() + dirName.slice(1)}Wrap">
     {{data.pageName}}
   </div>
 </template>
@@ -72,7 +72,7 @@ export default class About extends Vue {
 // scss 模版
 const scssTep = `@import "@/assets/scss/variables.scss";
 
-.${dirName}-wrap {
+#wb${dirName.charAt(0).toUpperCase() + dirName.slice(1)}Wrap {
   width: 100%;
 }
 `
@@ -139,8 +139,8 @@ export default {
 // api 接口模版
 const apiTep = `import Api from '@/utils/request'
 
-export const getData = (data) => {
-  return Api.getData(data)
+export const getData = () => {
+  return Api.getData()
 }
 
 `

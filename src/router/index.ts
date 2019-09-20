@@ -11,8 +11,7 @@ const router = new Router({
 })
 
 // 登陆页面路由 name
-// const LOGIN_PAGE_NAME = 'login'
-const LOGIN_PAGE_NAME = 'index'
+const LOGIN_PAGE_NAME = 'login'
 
 // 跳转之前
 router.beforeEach((to, from, next) => {
