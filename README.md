@@ -51,9 +51,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [x] sass
 - [x] typescript
 - [x] tslint
+- [x] rem
+- [x] vant
 - [ ] lodash
 - [ ] js-cookie
-- [ ] vant 
 - [ ] better-scroll
 - [ ] vue-lazyload
 - [ ] vuelidate
