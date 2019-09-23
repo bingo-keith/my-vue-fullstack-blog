@@ -1,0 +1,4 @@
+// 定义，这里$px使用web的尺寸计算
+@function to_rem($px){
+  @return $px  / 16 * 75 + px;
+}

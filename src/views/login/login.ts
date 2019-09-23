@@ -1,10 +1,14 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import { LoginData } from '@/types/views/login.interface'
-// import {  } from "@/components" // 组件
+import { Button } from "vant"
 import * as LoginApi from '@/api/login'
 
-@Component({})
+@Component({
+  components: {
+    [Button.name]: Button
+  }
+})
 export default class About extends Vue {
   // Getter
   @Getter author
