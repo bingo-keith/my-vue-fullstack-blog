@@ -1,21 +1,23 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import { LoginData } from '@/types/views/login.interface'
-import { Button, Icon } from "vant"
+import { Button, Icon, Row, Col } from "vant"
 import * as LoginApi from '@/api/login'
 
 @Component({
   components: {
     [Button.name]: Button,
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
+    [Row.name]: Row,
+    [Col.name]: Col
   }
 })
 export default class About extends Vue {
   // Getter
-  @Getter author
+  @Getter('author2') public author2!: any
   
   // Action
-  // @Action GET_DATA_ASYN
+  @Action('GET_DATA_ASYN2') public GET_DATA_ASYN2!: any
 
   // data
   data: LoginData = {
@@ -23,7 +25,7 @@ export default class About extends Vue {
   }
 
   created() {
-    // this.GET_DATA_ASYN()
+    this.GET_DATA_ASYN2({ author2: '123' })
   }
   
   activated() {

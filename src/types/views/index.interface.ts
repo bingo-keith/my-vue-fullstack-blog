@@ -5,7 +5,7 @@ export interface IndexData {
 
 // VUEX index.State 参数类型
 export interface IndexState {
-  author?: string
+  author1?: string
 }
 
 // GET_DATA_ASYN 接口参数类型

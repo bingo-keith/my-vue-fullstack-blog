@@ -16,7 +16,8 @@ export default [
     meta: {
       icon: '',
       keepAlive: false,
-      title: 'index'
+      title: 'index',
+      requireAuth: true
     }
   },
   {
@@ -26,7 +27,8 @@ export default [
     meta: {
       icon: '',
       keepAlive: false,
-      title: 'login'
+      title: 'login',
+      requireAuth: false
     }
   },
   {
@@ -36,7 +38,8 @@ export default [
     meta: {
       icon: '',
       keepAlive: false,
-      title: 'test'
+      title: 'test',
+      requireAuth: true
     }
   }
 ]

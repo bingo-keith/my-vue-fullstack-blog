@@ -11,6 +11,7 @@ declare interface Datas {
 }
 const baseURL = process.env.NODE_ENV === 'production' ? MAINHOST : location.origin
 const token = getToken()
+// const token = 123
 
 class HttpRequest {
   public queue: any // 请求的url集合

@@ -3,18 +3,18 @@ import { GetterTree, MutationTree, ActionTree } from 'vuex'
 import * as LoginApi from '@/api/login'
 
 const state: LoginState = {
-  author: '三毛'
+  author2: '三毛'
 }
 
 // 强制使用getter获取state
 const getters: GetterTree<LoginState, any> = {
-  author: (state: LoginState) => state.author
+  author2: (state: LoginState) => state.author2
 }
 
 // 更改state
 const mutations: MutationTree<LoginState> = {
   // 更新state都用该方法
-  UPDATE_STATE(state: LoginState, data: LoginState) {
+  UPDATE_STATE2(state: LoginState, data: LoginState) {
     for (const key in data) {
       if (!data.hasOwnProperty(key)) { return }
       state[key] = data[key]
@@ -23,12 +23,14 @@ const mutations: MutationTree<LoginState> = {
 }
 
 const actions: ActionTree<LoginState, any> = {
-  UPDATE_STATE_ASYN({ commit, state: LoginState }, data: LoginState) {
-    commit('UPDATE_STATE', data)
+  UPDATE_STATE_ASYN2({ commit, state: LoginState }, data: LoginState) {
+    commit('UPDATE_STATE2', data)
   },
-  GET_DATA_ASYN({ commit, state: LoginState }) {
-    console.log(123)
-    // LoginApi.getData()
+  GET_DATA_ASYN2({ commit, state: LoginState }) {
+    LoginApi.getData().then(res => {
+      console.log(res)
+      commit('UPDATE_STATE2')
+    })
   }
 }
 

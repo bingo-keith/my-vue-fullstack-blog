@@ -10,7 +10,7 @@ export default class About extends Vue {
   // @Getter author
   
   // Action
-  @Action GET_DATA_ASYN
+  @Action('index') GET_DATA_ASYN
 
   // data
   data: IndexData = {
@@ -19,7 +19,7 @@ export default class About extends Vue {
 
   created() {
     IndexApi.getData({ name: 'Chilly' }).then(data => {
-      console.log(data)
+      console.log(data, 'test')
     })
   }
   
