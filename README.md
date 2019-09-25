@@ -54,7 +54,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [x] rem
 - [x] vant
 - [ ] lodash
-- [ ] js-cookie
+- [x] js-cookie
 - [ ] better-scroll
 - [ ] vue-lazyload
 - [ ] vuelidate

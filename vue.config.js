@@ -1,8 +1,8 @@
 const merge = require('webpack-merge');
 const tsImportPluginFactory = require('ts-import-plugin');
 const path = require('path')
-const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
+// const autoprefixer = require('autoprefixer');
+// const pxtorem = require('postcss-pxtorem');
 
 const resolve = dir => {
   return path.join(__dirname, dir)
@@ -40,6 +40,7 @@ module.exports = {
       });
       return options;
     });
+    config.resolve.symlinks(true); // 修复HMR
     // 配置路径别名
     config.resolve.alias
       .set('@', resolve('src'))
@@ -47,7 +48,7 @@ module.exports = {
   },
   css: {
     modules: false, // 启用 CSS modules
-    extract: true, // 是否使用css分离插件
+    // extract: true, // 是否使用css分离插件
     sourceMap: false, // 开启 CSS source maps?
     loaderOptions: {} // css预设器配置项
   },

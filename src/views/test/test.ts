@@ -1,29 +1,23 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
-import { LoginData } from '@/types/views/login.interface'
-import { Button, Icon } from "vant"
-import * as LoginApi from '@/api/login'
+import { TestData } from '@/types/views/test.interface'
+// import {  } from "@/components" // 组件
 
-@Component({
-  components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon
-  }
-})
+@Component({})
 export default class About extends Vue {
   // Getter
-  @Getter author
+  // @Getter author
   
   // Action
   // @Action GET_DATA_ASYN
 
   // data
-  data: LoginData = {
-    pageName: 'hello'
+  data: TestData = {
+    pageName: 'test'
   }
 
   created() {
-    // this.GET_DATA_ASYN()
+    //
   }
   
   activated() {
