@@ -15,7 +15,7 @@ const LOGIN_PAGE_NAME = 'login'
 
 // 跳转之前
 router.beforeEach((to, from, next) => {
-  if(to.meta.requireAuth) {
+  if (to.meta.requireAuth) {
     // 需要验证token
     const token = getToken()
     if (!token && to.name !== LOGIN_PAGE_NAME) {
