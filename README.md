@@ -52,7 +52,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [x] typescript
 - [x] tslint
 - [x] rem
-- [x] vant
+- [x] mint-ui
 - [ ] lodash
 - [x] js-cookie
 - [ ] better-scroll
@@ -63,6 +63,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [ ] express
 - [ ] winston
 - [ ] nginx
+- [ ] multer
 
 - 项目部署
 - https://segmentfault.com/a/1190000012186563
