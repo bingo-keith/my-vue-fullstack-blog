@@ -24,8 +24,9 @@
   "dependencies": {
     "amfe-flexible": "^2.2.1",
     "axios": "^0.18.0",
+    "babel-plugin-component": "^1.1.1",
     "js-cookie": "^2.2.0",
-    "vant": "^2.2.2",
+    "mint-ui": "^2.2.13",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",

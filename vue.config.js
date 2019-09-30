@@ -28,7 +28,7 @@ module.exports = {
         getCustomTransformers: () => ({
           before: [
             tsImportPluginFactory({
-              libraryName: 'vant',
+              libraryName: 'mint-ui',
               libraryDirectory: 'es',
               style: true
             })
@@ -48,7 +48,7 @@ module.exports = {
   },
   css: {
     modules: false, // 启用 CSS modules
-    // extract: true, // 是否使用css分离插件
+    extract: true, // 是否使用css分离插件
     sourceMap: false, // 开启 CSS source maps?
     loaderOptions: {} // css预设器配置项
   },

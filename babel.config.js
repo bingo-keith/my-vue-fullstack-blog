@@ -4,13 +4,11 @@ module.exports = {
   ],
   plugins: [
     [
-      'import',
+      'component',
       {
-        libraryName: 'vant',
-        libraryDirectory: 'es',
-        style: name => `${name}/style/less`
-      },
-      'vant'
+        libraryName: 'mint-ui',
+        style: true
+      }
     ]
   ]
 }

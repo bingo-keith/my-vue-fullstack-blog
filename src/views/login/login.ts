@@ -1,15 +1,12 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import { LoginData } from '@/types/views/login.interface'
-import { Button, Icon, Row, Col } from "vant"
+import { Button } from "mint-ui"
 import * as LoginApi from '@/api/login'
 
 @Component({
   components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon,
-    [Row.name]: Row,
-    [Col.name]: Col
+    [Button.name]: Button
   }
 })
 export default class About extends Vue {
@@ -25,7 +22,7 @@ export default class About extends Vue {
   }
 
   created() {
-    this.GET_DATA_ASYN2({ author2: '123' })
+    // this.GET_DATA_ASYN2({ author2: '123' })
   }
   
   activated() {
