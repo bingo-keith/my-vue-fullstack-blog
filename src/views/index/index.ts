@@ -1,10 +1,38 @@
 import { Component, Vue } from "vue-property-decorator"
 import { Getter, Action } from "vuex-class"
 import { IndexData } from '@/types/views/index.interface'
-// import {  } from "@/components" // 组件
+import {
+  Button,
+  Progress,
+  Field
+} from "mint-ui"
 import * as IndexApi from '@/api/index'
+import {
+  BaiduMap,
+  BmGeolocation,
+  BmNavigation,
+  BmLocalSearch,
+  BmMapType,
+  BmScale,
+  BmPanorama,
+  BmTraffic
+} from 'vue-baidu-map'
 
-@Component({})
+@Component({
+  components: {
+    [Button.name]: Button,
+    [Progress.name]: Progress,
+    [Field.name]: Field,
+    BaiduMap,
+    BmGeolocation,
+    BmNavigation,
+    BmLocalSearch,
+    BmMapType,
+    BmScale,
+    BmPanorama,
+    BmTraffic
+  }
+})
 export default class About extends Vue {
   // Getter
   // @Getter author
@@ -14,11 +42,21 @@ export default class About extends Vue {
 
   // data
   data: IndexData = {
-    pageName: 'index'
+    pageName: 'index',
+    center: {
+      lng: 0,
+      lat: 0
+    },
+    scalable: true,
+    zoom: 3,
+    traffic: {
+      weekday: 7, // 星期天
+      hour: 12 // 十二点
+    }
   }
 
   created() {
-    IndexApi.getData({ name: 'Chilly' }).then(data => {
+    IndexApi.getList().then(data => {
       console.log(data, 'test')
     })
   }
@@ -28,12 +66,20 @@ export default class About extends Vue {
   }
 
   mounted() {
-    //
   }
 
   // 初始化函数
   init() {
     //
+  }
+
+  handler({ BMap, map }) {
+    console.log(BMap, map)
+    this.data.center.lng = 114.30
+    this.data.center.lat = 30.60
+    this.data.zoom = 15
+    // 鼠标缩放
+    map.enableScrollWheelZoom(true);
   }
     
 }

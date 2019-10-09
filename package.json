@@ -28,6 +28,7 @@
     "js-cookie": "^2.2.0",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.17",
+    "vue-baidu-map": "^0.21.22",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",

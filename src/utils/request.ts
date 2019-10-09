@@ -10,8 +10,8 @@ declare interface Datas {
   [key: string]: any
 }
 const baseURL = process.env.NODE_ENV === 'production' ? MAINHOST : location.origin
-const token = getToken()
-// const token = 123
+// const token = getToken()
+// const token = 123 // TODO 假数据
 
 class HttpRequest {
   public queue: any // 请求的url集合
@@ -65,10 +65,10 @@ class HttpRequest {
 const requestFail = (res: AxiosResponse) => {
   let errStr = '网络繁忙！'
   // token失效重新登录
-  if (res.data.code === 1000001) {
-    console.error('token失效重新登录')
-    return router.replace({ name: 'login' })
-  }
+  // if (res.data.code === 1000001) {
+  //   console.error('token失效重新登录')
+  //   return router.replace({ name: 'login' })
+  // }
 
   return {
     err: console.error({
@@ -88,7 +88,7 @@ const conbineOptions = (_opts: any, data: Datas, method: Methods): AxiosRequestC
   const options = {
     method: opts.method || data.method || method || 'GET',
     url: opts.url,
-    header: { 'user-token': token },
+    // header: { 'user-token': token },
     baseURL
   }
   return options.method !== 'GET' ? Object.assign(options, { data: _data }) : Object.assign(options, { params: _data })
@@ -104,10 +104,10 @@ const Api = (() => {
   const requestList: any = requestConfig
   const fun = (opts: AxiosRequestConfig | string) => {
     return async (data = {}, method: Methods = "GET") => {
-      if (!token) {
-        console.error('No Token')
-        return router.replace({ name: 'login' })
-      }
+      // if (!token) {
+      //   console.error('No Token')
+      //   return router.replace({ name: 'login' })
+      // }
       const newOpts = conbineOptions(opts, data, method)
       const res = await HTTP.request(newOpts)
       return res

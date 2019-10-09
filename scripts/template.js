@@ -17,7 +17,7 @@ if (!dirName) {
  * @msg: vue页面模版
  */
 const VueTep = `<template>
-  <div id="wb${dirName.charAt(0).toUpperCase() + dirName.slice(1)}Wrap">
+  <div id="wb${dirName.charAt(0).toUpperCase() + dirName.slice(1)}Wrapper">
     {{data.pageName}}
   </div>
 </template>
@@ -72,7 +72,7 @@ export default class About extends Vue {
 // scss 模版
 const scssTep = `@import "@/assets/scss/variables.scss";
 
-#wb${dirName.charAt(0).toUpperCase() + dirName.slice(1)}Wrap {
+#wb${dirName.charAt(0).toUpperCase() + dirName.slice(1)}Wrapper {
   width: 100%;
 }
 `

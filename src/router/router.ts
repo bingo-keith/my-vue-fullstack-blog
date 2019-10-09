@@ -21,17 +21,6 @@ export default [
     }
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/login.vue'),
-    meta: {
-      icon: '',
-      keepAlive: false,
-      title: 'login',
-      requireAuth: false
-    }
-  },
-  {
     path: '/test',
     name: 'test',
     component: () => import('@/views/test/test.vue'),
