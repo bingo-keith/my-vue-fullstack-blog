@@ -1,7 +1,5 @@
 <template>
   <div id="wbIndexWrapper">
-		<!-- <router-link :to="{name: 'index'}">首页</router-link> -->
-		<!-- <router-link :to="{name: 'test'}">测试</router-link> -->
     <div class="wb-first-screen">
       <header class="wb-index-header">
         <div><img src="~@/assets/images/icon_title.png" alt="程序员的自我修养"></div>
@@ -15,13 +13,13 @@
       </header>
       <nav class="wb-index-nav">
         <div>
-          <a href="javascript:;" class="wb-index-nav-item">About</a>
-          <a href="javascript:;" class="wb-index-nav-item">Project</a>
-          <a href="javascript:;" class="wb-index-nav-item">Advance</a>
+          <router-link :to="{name: 'about'}" class="wb-index-nav-item">About</router-link>
+          <router-link :to="{name: 'project'}" class="wb-index-nav-item">Project</router-link>
+          <router-link :to="{name: 'advance'}" class="wb-index-nav-item">Advance</router-link>
         </div>
         <div>
-          <a href="javascript:;" class="wb-index-nav-item">Essay</a>
-          <a href="javascript:;" class="wb-index-nav-item">Contact</a>
+          <router-link :to="{name: 'essay'}" class="wb-index-nav-item">Essay</router-link>
+          <router-link :to="{name: 'contact'}" class="wb-index-nav-item">Contact</router-link>
         </div>
       </nav>
       <article class="wb-index-intro">
@@ -144,15 +142,15 @@
         ></bm-geolocation>
         <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
         <bm-panorama anchor="BMAP_ANCHOR_BOTTOM_LEFT"></bm-panorama>
-        <bm-traffic :predictDate="traffic"></bm-traffic>
+        <bm-traffic :predictDate="data.traffic"></bm-traffic>
       </baidu-map>
-      <div class="wb-contact-info">
+      <div class="wb-contact-info" v-show="data.showContactForm">
         <div class="wb-contact-form">
           <h6 class="wb-contact-form-title">Get In Touch With Me</h6>
           <mt-field class="wb-contact-form-field" placeholder="Your Name"></mt-field>
           <mt-field class="wb-contact-form-field" placeholder="Your Email" type="email"></mt-field>
           <mt-field class="wb-contact-form-textarea" placeholder="Your Message" type="textarea" rows="4"></mt-field>
-          <mt-button class="wb-contact-form-btn" type="danger" size="normal">SUBMIT</mt-button>
+          <mt-button class="wb-contact-form-btn" type="danger" size="normal" @click="handleSubmit">SUBMIT</mt-button>
         </div>
       </div>
     </div>

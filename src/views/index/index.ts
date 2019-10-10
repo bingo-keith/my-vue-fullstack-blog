@@ -47,12 +47,12 @@ export default class About extends Vue {
       lng: 0,
       lat: 0
     },
-    scalable: true,
     zoom: 3,
     traffic: {
       weekday: 7, // 星期天
       hour: 12 // 十二点
-    }
+    },
+    showContactForm: true
   }
 
   created() {
@@ -66,6 +66,7 @@ export default class About extends Vue {
   }
 
   mounted() {
+    // 
   }
 
   // 初始化函数
@@ -74,12 +75,15 @@ export default class About extends Vue {
   }
 
   handler({ BMap, map }) {
-    console.log(BMap, map)
     this.data.center.lng = 114.30
     this.data.center.lat = 30.60
     this.data.zoom = 15
     // 鼠标缩放
-    map.enableScrollWheelZoom(true);
+    map.enableScrollWheelZoom(true)
+  }
+
+  handleSubmit() {
+    this.data.showContactForm = false
   }
     
 }

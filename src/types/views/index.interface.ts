@@ -3,7 +3,7 @@ export interface IndexData {
   pageName: string,
   center: any,
   zoom: number,
-  scalable: boolean,
+  showContactForm: boolean,
   traffic: any
 }
 
