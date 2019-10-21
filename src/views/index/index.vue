@@ -96,7 +96,7 @@
           <div class="wb-experience-item-mark"></div>
           <div class="wb-experience-item-content">
             <ul class="wb-experience-item-content-wrapper">
-              <li>Developer @ Nashare</li>
+              <li>Developer @ NashareDeveloper @ NashareDeveloper @ NashareDeveloper @ NashareDeveloper @ Nashare</li>
               <li class="wb-experience-item-content-wrapper-addorn">Sep 2017 - Nox 2017</li>
             </ul>
           </div>
