@@ -6,16 +6,22 @@ var user = require('../modules/handle');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'SQL for MySQL' });
 });
-router.get('/addUser', function(req, res, next) {
-    user.add(req, res, next);
+router.get('/queryAllInfo', function(req, res, next) {
+    user.queryAllBaseInfo(req, res, next);
 });
-router.get('/queryAll', function(req, res, next) {
-    user.queryAll(req, res, next);
+router.get('/querySkill', function(req, res, next) {
+    user.queryUserSkills(req, res, next);
 });
- 
-router.get('/query', function(req, res, next) {
+router.get('/queryAbility', function(req, res, next) {
+    user.queryUserAbilities(req, res, next);
+});
+router.get('/queryUserById', function(req, res, next) {
     user.queryById(req, res, next);
 });
+router.post('/addUser', function(req, res, next) {
+    user.add(req, res, next);
+});
+
 router.get('/deleteUser', function(req, res, next) {
     user.delete(req, res, next);
 });

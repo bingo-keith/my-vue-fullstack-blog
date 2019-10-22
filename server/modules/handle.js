@@ -6,22 +6,42 @@
      +req.query.id 可以将id转为整数
  */
 // 引入mysql
-var mysql = require('mysql');
+const mysql = require('mysql');
 // 引入mysql连接配置
-var mysqlconfig = require('../config/mysql');
+const mysqlconfig = require('../config/mysql');
 // 引入连接池配置
-var poolextend = require('./poolextend');
+const poolextend = require('./poolextend');
 // 引入SQL模块
-var sql = require('./sql');
+const sql = require('./sql');
 // 引入json模块
-var json = require('./json');
+const json = require('./json');
 // 使用连接池，提升性能
-var pool = mysql.createPool(poolextend({}, mysqlconfig));
-var userData = {
+const pool = mysql.createPool(poolextend({}, mysqlconfig));
+
+/**
+ * @description 转换大小写和下划线命名
+ * @author Chilly
+ * @param {*} [obj={}]    对象
+ * @param {string} [type='H']   转换类型：H驼峰，U下划线
+ * @returns
+ */
+function serializeJSON(obj = {}, type = 'H') {
+    return Object.keys(obj).reduce((res, item) => {
+        const objKey = type === 'H'
+                        ? item.toLowerCase().replace(/_(\w)/g, (v, k) => k.toUpperCase())
+                        : item.replace(/([A-Z])/g, (k, v) => `_${k}`).toUpperCase()
+        res[objKey] = obj[item]
+        return res
+    }, {})
+}
+
+const userData = {
     add: function(req, res, next) {
+        let param = req.body;
+        param = serializeJSON(param, 'U');
+        param = [ param.NAME, param.AGE, param.INTRODUCTION || '', param.GENDER, param.SKILL_INFO || '', param.ABILITY_INFO || '', param.EXP_INFO || '' ]
         pool.getConnection(function(err, connection) {
-            var param = req.query || req.params;
-            connection.query(sql.insert, [param.id, param.name, param.age], function(err, result) {
+            connection.query(sql.insert, param, function(err, result) {
                 if (result) {
                     result = 'add'
                 }
@@ -34,7 +54,7 @@ var userData = {
     },
     delete: function(req, res, next) {
         pool.getConnection(function(err, connection) {
-            var id = +req.query.id;
+            const id = +req.query.id;
             connection.query(sql.delete, id, function(err, result) {
                 if (result.affectedRows > 0) {
                     result = 'delete';
@@ -47,7 +67,7 @@ var userData = {
         });
     },
     update: function(req, res, next) {
-        var param = req.body;
+        const param = req.body;
         if (param.name == null || param.age == null || param.id == null) {
             json(res, undefined);
             return;
@@ -64,15 +84,17 @@ var userData = {
             });
         });
     },
+    
+    
     queryById: function(req, res, next) {
-        var id = +req.query.id;
+        const id = +req.query.id;
         pool.getConnection(function(err, connection) {
             connection.query(sql.queryById, id, function(err, result) {
-                if (result != '') {
-                    var _result = result;
+                if (result) {
+                    const _result = result;
                     result = {
                         result: 'select',
-                        data: _result
+                        data: _result.map(v => serializeJSON(v))
                     }
                 } else {
                     result = undefined;
@@ -82,22 +104,59 @@ var userData = {
             });
         });
     },
-    queryAll: function(req, res, next) {
+    queryAllBaseInfo: function(req, res, next) {
+        const id = +req.query.id;
         pool.getConnection(function(err, connection) {
-            connection.query(sql.queryAll, function(err, result) {
-                if (result != '') {
-                    var _result = result;
+            connection.query(sql.queryAllBaseInfo, id, function(err, result) {
+                if (!!result) {
+                    const _result = result
                     result = {
                         result: 'selectall',
-                        data: _result
+                        data: _result.map(v => serializeJSON(v))
                     }
                 } else {
-                    result = undefined;
+                    result = undefined
                 }
-                json(res, result);
-                connection.release();
+                json(res, result)
+                connection.release()
             });
         });
+    },
+    queryUserSkills: function(req, res, next) {
+        const id = +req.query.id;
+        pool.getConnection(function(err, connection) {
+            connection.query(sql.queryUserSkills, id, function(err, result) {
+                if(!!result) {
+                    const _result = result
+                    result = {
+                        result: 'userSkills',
+                        data: _result.map(v => serializeJSON(v))
+                    }
+                } else {
+                    result = undefined
+                }
+                json(res, result)
+                connection.release()
+            })
+        })
+    },
+    queryUserAbilities: function(req, res, next) {
+        const id = +req.query.id;
+        pool.getConnection(function(err, connection) {
+            connection.query(sql.queryUserAbilities, id, function(err, result) {
+                if(!!result) {
+                    const _result = result
+                    result = {
+                        result: 'userAbilities',
+                        data: _result.map(v => serializeJSON(v))
+                    }
+                } else {
+                    result = undefined
+                }
+                json(res, result)
+                connection.release()
+            })
+        })
     }
 };
 module.exports = userData;
